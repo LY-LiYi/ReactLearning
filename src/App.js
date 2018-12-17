@@ -1,5 +1,5 @@
 import React from 'react'
-import './App'
+import './App.scss'
 
 class App extends React.Component {
     render() {
@@ -7,7 +7,7 @@ class App extends React.Component {
             <h1>Hello React & Webpack !</h1>
             <ul>
                 {
-                    ['a', 'b', 'c'].map(name => <li>{`im ${name}`}</li>)
+                    ['a', 'b', 'c'].map((name,index) => <li key={index}>{`im ${name}`}</li>)
                 }
             </ul>
         </div>
