@@ -10,7 +10,7 @@ module.exports = {
     // 具体参考 https://webpack.js.org/concepts/#entry
     // 这里 entry 是一个对象，每个页面和它的入口模块是一个 key/value 对   可以有多入口
     // /src/index.js是你的入口js文件
-    entry: './src/index.js',
+    entry: ['./src/index.js','babel-polyfill'],
     // 告诉 webpack 打包好的文件存放在哪里，以及怎么命名
     // 具体参考 https://webpack.js.org/concepts/#output
     // 这里 filename 有所改变，[name] 表示 entry 里面的 key
@@ -20,6 +20,8 @@ module.exports = {
         filename: 'bundle.[hash].js',
         path: path.join(__dirname, '/dist')
     },
+    // 这个属性里主要设置 extensions , 也就是文件后缀名
+    // 查找依赖的时候的会以此查找这里设置的几个文件名来查找文件
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
     },
@@ -33,7 +35,8 @@ module.exports = {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader']
             }, {
-                test: /\.js$/,
+                // test: /\.jsx?$/,
+                test: /\.jsx?$/,
                 use: ['babel-loader'],
                 exclude: /node_modules/,
             },
