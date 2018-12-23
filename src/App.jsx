@@ -1,10 +1,11 @@
 import React from 'react'
 import './App.scss'
+import {Loading} from './components/loading.jsx'
 
 
 class App extends React.Component {
     render() {
-        return <div>
+        return <div class="App">
             <h1>Hello React & Webpack !</h1>
             <ul>
                 {
@@ -14,5 +15,5 @@ class App extends React.Component {
         </div>
     }
 }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+                  
 export default  App;

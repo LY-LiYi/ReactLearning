@@ -1,6 +1,6 @@
 //加载动画组件
 import React from 'react'
-import './loading'
+import './Loading.scss'
 
 class Loading extends React.Component{
     render(){
