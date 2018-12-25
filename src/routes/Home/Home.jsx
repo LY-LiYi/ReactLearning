@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon, Progress} from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Progress, } from 'antd';
 import './Home.scss'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -10,9 +10,9 @@ const SubMenu = Menu.SubMenu;
 
 class Home extends React.Component {
 
-    // state = {
-    //     collapsed: false,
-    //   };
+    state = {
+        collapsed: false,
+      };
 
     //   onCollapse = (collapsed) => {
     //     console.log(collapsed);
@@ -34,9 +34,9 @@ class Home extends React.Component {
                 </Header>
                 <Sider
                     collapsible
-                //   collapsed={this.state.collapsed}
-                //   onCollapse={this.onCollapse}
-                style={{ marginTop: '60px' }}
+                    //   collapsed={this.state.collapsed}
+                    //   onCollapse={this.onCollapse}
+                    style={{ marginTop: '60px' }}
                 >
                     <div className="logo" />
                     <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
@@ -76,13 +76,12 @@ class Home extends React.Component {
                             <Breadcrumb.Item>首页</Breadcrumb.Item>
                             <Breadcrumb.Item>Bill</Breadcrumb.Item>
                         </Breadcrumb>
-                        <div style={{ padding: 24, background: '#fff', minHeight: 720}}>
-                            
+                        <div style={{ padding: 24, background: '#fff', minHeight: 720 }}>
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                            LiYi© 2018
-          </Footer>
+                        LiYi© 2018
+                    </Footer>
                 </Layout>
             </Layout>
         );

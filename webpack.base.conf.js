@@ -37,7 +37,7 @@ module.exports = {
             }, {
                 // test: /\.jsx?$/,
                 test: /\.jsx?$/,
-                use: ['babel-loader'],
+                use: ['babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0'],
                 exclude: /node_modules/,
             },
             {
