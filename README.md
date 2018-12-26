@@ -1,7 +1,7 @@
 # ReactLearning
 目录结构
     ├── src                  # 程序源文件
-│   ├── index.js              # 程序启动和渲染
+│   ├── index.js             # 程序启动和渲染
 │   ├── components           # 全局可复用的表现组件(Presentational Components)
 │   ├── containers           # 全局可复用的容器组件
 │   ├── layouts              # 主页结构

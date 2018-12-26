@@ -1,9 +1,17 @@
 import React from 'react'
-import '../../layouts/Block.scss'
 import './Registration.scss'
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, } from 'antd';
 
 class Registration extends React.Component {
+    
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log('Received values of form: ', values);
+            }
+        });
+    }
 
     render() {
 
@@ -19,13 +27,13 @@ class Registration extends React.Component {
                 sm: { span: 20 },
             },
         };
-
+        
+        
         return (
-            <div className="backdrop">
-                <div className="frame">
+            <div className="regBackDrop">
+                <div className="regFrame">
                     <p>用户注册</p>
-
-                    <div className="form">
+                    <div className="regForm">
                         <Form onSubmit={this.handleSubmit}>
                             <Form.Item
                                 {...formItemLayout}

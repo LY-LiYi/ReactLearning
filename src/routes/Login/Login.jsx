@@ -1,11 +1,12 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom';
 import './Login.scss'
-import '../../layouts/Block.scss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
 
 const FormItem = Form.Item;
 
 class Login extends React.Component {
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -16,6 +17,10 @@ class Login extends React.Component {
         });
     }
 
+    handleForgetPass=()=>{
+        <Redirect push to="../PasswordReset/PasswordReset.jsx" />
+    }
+
 
     render() {
         
@@ -23,11 +28,11 @@ class Login extends React.Component {
         const { getFieldDecorator } = this.props.form;
 
         return (
-            <div className="backdrop">
-                <div className="frame">
+            <div className="loginBackDrop">
+                <div className="loginFrame">
                     <p>用户登录</p>
-                    <div className="form">
-                        <Form onSubmit={this.cons} className="login-form" style={{ maxWidth: '300px' }}>
+                    <div className="loginForm">
+                        <Form onSubmit={this.handleSubmit} className="login-form" style={{ maxWidth: '300px' }}>
                             <Form.Item>
                                 {getFieldDecorator('userName', {
                                     rules: [{ required: true, message: 'Please input your username!' }],
@@ -49,7 +54,7 @@ class Login extends React.Component {
                                 })(
                                     <Checkbox>记住我</Checkbox>
                                 )}
-                                <a className="login-form-forgot" style={{ float: 'right', }} href="">忘记密码</a>
+                                <span  onClick={this.handleForgetPass} className="login-form-forgot" style={{ float: 'right', color:'#1890ff',cursor:'pointer'}} href="">忘记密码</span>
                                 <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>
                                     登录
                         </Button>

@@ -10,7 +10,7 @@ module.exports = {
     // 具体参考 https://webpack.js.org/concepts/#entry
     // 这里 entry 是一个对象，每个页面和它的入口模块是一个 key/value 对   可以有多入口
     // /src/index.js是你的入口js文件
-    entry: ['./src/index.js','babel-polyfill'],
+    entry: ['./src/index.js', 'babel-polyfill'],
     // 告诉 webpack 打包好的文件存放在哪里，以及怎么命名
     // 具体参考 https://webpack.js.org/concepts/#output
     // 这里 filename 有所改变，[name] 表示 entry 里面的 key
@@ -41,13 +41,24 @@ module.exports = {
                 exclude: /node_modules/,
             },
             {
-                test: /\.scss/,
+                test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.tsx?$/,
                 loaders: ['babel-loader', 'ts-loader']
             },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 8192
+                        }
+                    }
+                ]
+            }
         ]
     },
     // 插件可以用于执行范围更广的任务，包括打包、优化、压缩、搭建服务器等等

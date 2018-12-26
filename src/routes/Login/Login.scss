@@ -1,1 +1,33 @@
- 
+.loginBackDrop{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    background-color: #f3f3f3;
+    background: url('../assets/images/tumblr_pazry6s9sJ1qjnpjio1_1280.gif') repeat;
+
+    .loginFrame
+    {
+        width: 34rem;
+        height: 26rem;
+        border-radius: 4px;
+        border: 1px solid #dadce0;
+        padding: 2rem;
+        background-color: #ffffff;
+        justify-items: center;
+
+        p{
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+         .loginForm
+        {
+            height: 0;
+            display: flex;
+            justify-content: center;
+        }
+    }
+    
+}  
