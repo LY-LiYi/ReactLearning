@@ -7,6 +7,9 @@ const merge = require('webpack-merge');
       devtool: 'inline-source-map',
       devServer: {
           contentBase: './dist',
-          port: 3000
+          port: 3000,
+          //时时刷新
+        //   inline:true,
+          hot:true,
       }
   });
