@@ -2,6 +2,8 @@ import React from 'react'
 import { withRouter } from 'react-router-dom';
 import './Login.scss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import Store from '../../store/store'
+
 
 const FormItem = Form.Item;
 

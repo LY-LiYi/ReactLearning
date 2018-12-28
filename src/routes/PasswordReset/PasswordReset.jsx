@@ -36,7 +36,7 @@ class PasswordReset extends React.Component {
             }
         });
     }
-    
+
 
     render() {
         const schedule=0;
@@ -90,7 +90,7 @@ class PasswordReset extends React.Component {
                                 </FormItem>
                             </Form>
                         </div>
-                        {/* <div className="passNewPsaaword">
+                        <div className="passNewPsaaword">
                             <p className="passwordP">请输入新密码</p>
                             <Form onSubmit={this.handleSubmitPassWord} className="login-form">
                                 <p>新密码</p>
@@ -113,7 +113,7 @@ class PasswordReset extends React.Component {
                                     <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>确定</Button>
                                 </FormItem>
                             </Form>
-                        </div> */}
+                        </div>
                     </div>
                 </div>
             </div>
