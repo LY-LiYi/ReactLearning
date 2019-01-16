@@ -6,7 +6,7 @@ import Store from '../../store/store'
 
 
 const FormItem = Form.Item;
-
+// es6形式的组件
 class Login extends React.Component {
 
 

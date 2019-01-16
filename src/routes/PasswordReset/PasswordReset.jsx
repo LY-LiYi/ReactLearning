@@ -1,21 +1,18 @@
 import React from 'react'
 import './PasswordReset.scss';
+
 import { Steps, Form, Icon, Input, Button, message } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
+
+// import  不进行页面按需加载引入方式 
+// webpack require.ensure() 进行页面按需加载引入方式 
+import Passverifyuser from './passVerifyUser.jsx';
 
 const Step = Steps.Step;
 
 class PasswordReset extends React.Component {
 
-    //验证用户名
-    handleSubmit = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-    }
+   
 
     //验证邮箱
     handleSubmitemail = (e) => {
@@ -51,12 +48,15 @@ class PasswordReset extends React.Component {
                     <div className="passSteps">
                         <Steps progressDot current={schedule}>
                             <Step title="验证用户名" description="" />
-                            <Step title="邮箱验证" description="" />
+                            <Step title="验证注册邮箱" description="" />
                             <Step title="输入新密码" description="" />
                         </Steps>
                     </div>
                     <div className="passInput">
-                        <div className="passVerifyUser">
+                        {/* 组件名大写开头 */}
+                        <Passverifyuser/>
+                        {/* 拆分 */}
+                        {/* <div className="passVerifyUser">
                             <p>请输入用户名</p>
                             <Form onSubmit={this.handleSubmit} className="login-form">
                                 <Form.Item>
@@ -70,7 +70,7 @@ class PasswordReset extends React.Component {
                                     <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>验证</Button>
                                 </FormItem>
                             </Form>
-                        </div>
+                        </div> */}
                         <div className="passVerifyEmail">
                             <p>请输入注册邮箱</p>
                             <Form onSubmit={this.handleSubmitemail} className="login-form">
@@ -125,3 +125,4 @@ class PasswordReset extends React.Component {
 const PasswordResetFrom = Form.create()(PasswordReset);
 
 export default PasswordResetFrom;
+
