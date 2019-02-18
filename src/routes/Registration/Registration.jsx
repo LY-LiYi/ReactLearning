@@ -42,7 +42,7 @@ class Registration extends React.Component {
                                 )}
                             >
                                 {getFieldDecorator('nickname', {
-                                    rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
+                                    rules: [{ required: true, message: '请输入你的昵称!', whitespace: true }],
                                 })(
                                     <Input style={{ width: '90%', }} />
                                 )}
@@ -53,9 +53,9 @@ class Registration extends React.Component {
                             >
                                 {getFieldDecorator('email', {
                                     rules: [{
-                                        type: 'email', message: 'The input is not valid E-mail!',
+                                        type: 'email', message: '输入的邮箱有误!',
                                     }, {
-                                        required: true, message: 'Please input your E-mail!',
+                                        required: true, message: '请输入你的邮箱!',
                                     }],
                                 })(
                                     <Input style={{ width: '90%', }} />
@@ -67,7 +67,7 @@ class Registration extends React.Component {
                             >
                                 {getFieldDecorator('password', {
                                     rules: [{
-                                        required: true, message: 'Please input your password!',
+                                        required: true, message: '请输入你的密码!',
                                     }, {
                                         validator: this.validateToNextPassword,
                                     }],
@@ -81,7 +81,7 @@ class Registration extends React.Component {
                             >
                                 {getFieldDecorator('confirm', {
                                     rules: [{
-                                        required: true, message: 'Please confirm your password!',
+                                        required: true, message: '请确认你的密码!',
                                     }, {
                                         validator: this.compareToFirstPassword,
                                     }],
