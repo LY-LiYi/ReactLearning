@@ -3,7 +3,7 @@ import './Registration.scss'
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, } from 'antd';
 
 class Registration extends React.Component {
-    
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -27,8 +27,8 @@ class Registration extends React.Component {
                 sm: { span: 20 },
             },
         };
-        
-        
+
+
         return (
             <div className="regBackDrop">
                 <div className="regFrame">
@@ -90,7 +90,7 @@ class Registration extends React.Component {
                                 )}
                             </Form.Item>
                             <Form.Item>
-                                <Button type="primary" htmlType="submit" style={{ width: '90%', marginLeft: '5%',}}>注册</Button>
+                                <Button type="primary" htmlType="submit" style={{ width: '90%', marginLeft: '5%', }}>注册</Button>
                             </Form.Item>
                         </Form>
                     </div>

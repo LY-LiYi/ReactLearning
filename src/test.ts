@@ -32,11 +32,11 @@ class Student {
     interface Personstu {
     firstName: string;
     lastName: string;
-  }
+}
 
 function greeter(person: Personstu) {
     return "Hello," + person.firstName + '' + person.lastName;
-  }
+}
    
 }
 
@@ -97,7 +97,7 @@ console.log(mySquare);
 
 //属性的get和set访问器
 class User {
-    private _name: string='';
+    private _name: string = '';
 
     get name(): string {
         return this._name;
@@ -290,7 +290,7 @@ department.printMeeting();
 
 class Greeter {
     static standardGreeting = "Hello, there";
-    greeting: string='';
+    greeting: string = '';
     greet() {
         if (this.greeting) {
             return "Hello, " + this.greeting;
@@ -320,8 +320,8 @@ console.log(greeter2.greet());
 
 // 把类当做接口使用
 class Point {
-    x: number=0;
-    y: number=0;
+    x: number = 0;
+    y: number = 0;
 }
 
 interface Point3d extends Point {
@@ -336,7 +336,7 @@ let suits = ["hearts", "spades", "clubs", "diamonds"];
 
 function pickCard(x: { suit: string; card: number; }[]): number;
 function pickCard(x: number): { suit: string; card: number; };
-function pickCard(x): any {
+function pickCard(x: any) {
     // Check to see if we're working with an object/array
     // if so, they gave us the deck and we'll pick the card
     if (typeof x == "object") {
@@ -470,7 +470,7 @@ enum E2 {
 enum Enum {
     A
 }
-let  c= Enum.A;
+let c = Enum.A;
 let nameOfA = Enum[c]; // "A"
 
 //const枚举
@@ -513,13 +513,13 @@ jim.log();
 // 一个值的类型是 A | B，我们能够 确定的是它包含了 A 和 B中共有的成员
 
 interface Bird {
-    fly():any;
-    layEggs():any;
+    fly(): any;
+    layEggs(): any;
 }
 
 interface Fish {
-    swim():any;
-    layEggs():any;
+    swim(): any;
+    layEggs(): any;
 }
 
 function getSmallPet(): Fish | Bird {

@@ -21,16 +21,16 @@ class Login extends React.Component {
     }
 
     //路由跳转 withRouter高阶组件 使用history   官方推荐方法
-    handleForgetPass=()=>{
+    handleForgetPass = () => {
         this.props.history.push("../PasswordReset");
     }
 
-    handleRes=()=>{
+    handleRes = () => {
         this.props.history.push("../Registration");
     }
 
     render() {
-        
+
         //在render里面定义变量 render外定义方法
         const { getFieldDecorator } = this.props.form;
 
@@ -61,14 +61,14 @@ class Login extends React.Component {
                                 })(
                                     <Checkbox>自动登录</Checkbox>
                                 )}
-                                <span  onClick={this.handleForgetPass} className="login-form-forgot" style={{ float: 'right', color:'#1890ff',cursor:'pointer'}} >忘记密码</span>
+                                <span onClick={this.handleForgetPass} className="login-form-forgot" style={{ float: 'right', color: '#1890ff', cursor: 'pointer' }} >忘记密码</span>
                                 <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>
                                     登录
                                 </Button>
-                                或者者 <span onClick={this.handleRes} style={{ color:'#1890ff',cursor:'pointer'}}>立即注册</span>
+                                或者者 <span onClick={this.handleRes} style={{ color: '#1890ff', cursor: 'pointer' }}>立即注册</span>
                             </Form.Item>
                         </Form>
-                    </div>
+                    </div> 
 
                 </div>
             </div>
