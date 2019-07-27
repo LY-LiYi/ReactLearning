@@ -12,7 +12,7 @@ const Step = Steps.Step;
 
 class PasswordReset extends React.Component {
 
-   
+
 
     //验证邮箱
     handleSubmitemail = (e) => {
@@ -25,7 +25,7 @@ class PasswordReset extends React.Component {
     }
 
     //输入新密码
-    handleSubmitPassWord= (e) => {
+    handleSubmitPassWord = (e) => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
             if (!err) {
@@ -36,7 +36,7 @@ class PasswordReset extends React.Component {
 
 
     render() {
-        const schedule=0;
+        const schedule = 0;
         const { getFieldDecorator, isFieldTouched, getFieldsError } = this.props.form;
         // const passwordError = isFieldTouched('password') && getFieldError('password');
         const info = () => {
@@ -54,23 +54,23 @@ class PasswordReset extends React.Component {
                     </div>
                     <div className="passInput">
                         {/* 组件名大写开头 */}
-                        <Passverifyuser/>
+                        {/* <Passverifyuser/> */}
                         {/* 拆分 */}
-                        {/* <div className="passVerifyUser">
+                        <div className="passVerifyUser">
                             <p>请输入用户名</p>
                             <Form onSubmit={this.handleSubmit} className="login-form">
                                 <Form.Item>
                                     {getFieldDecorator('userName', {
                                         rules: [{ required: true, message: 'Please input your username!' }],
                                     })(
-                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)', }}  />} placeholder="Username" />
+                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)', }} />} placeholder="Username" />
                                     )}
                                 </Form.Item>
                                 <FormItem>
                                     <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>验证</Button>
                                 </FormItem>
                             </Form>
-                        </div> */}
+                        </div>
                         <div className="passVerifyEmail">
                             <p>请输入注册邮箱</p>
                             <Form onSubmit={this.handleSubmitemail} className="login-form">

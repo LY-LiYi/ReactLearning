@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom';
 import './Login.scss'
 import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import axios from 'axios';
 import Store from '../../store/store'
 
 
@@ -9,6 +10,13 @@ const FormItem = Form.Item;
 // es6形式的组件
 class Login extends React.Component {
 
+    componentDidMount() {
+        axios.get("https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?g_tk=5381&uin=0&format=jsonp&jsonpCallback=callback&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1512554796112", {}).then(
+            res => {
+                console.log(res);
+            }
+        )
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -44,14 +52,14 @@ class Login extends React.Component {
                                 {getFieldDecorator('userName', {
                                     rules: [{ required: true, message: '请输入用户名!' }],
                                 })(
-                                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)', minHeight: 'none' }} />} placeholder="Username" />
+                                    <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)', minHeight: 'none' }} />} placeholder="用户名" />
                                 )}
                             </Form.Item>
                             <Form.Item>
                                 {getFieldDecorator('password', {
                                     rules: [{ required: true, message: '请输入密码!' }],
                                 })(
-                                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                                    <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
                                 )}
                             </Form.Item>
                             <Form.Item>
@@ -65,10 +73,10 @@ class Login extends React.Component {
                                 <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>
                                     登录
                                 </Button>
-                                或者者 <span onClick={this.handleRes} style={{ color: '#1890ff', cursor: 'pointer' }}>立即注册</span>
+                                或者 <span onClick={this.handleRes} style={{ color: '#1890ff', cursor: 'pointer' }}>立即注册</span>
                             </Form.Item>
                         </Form>
-                    </div> 
+                    </div>
 
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon, Progress, } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 import './Home.scss'
 
 const { Header, Content, Footer, Sider } = Layout;
@@ -12,7 +12,7 @@ class Home extends React.Component {
 
     state = {
         collapsed: false,
-      };
+    };
 
     //   onCollapse = (collapsed) => {
     //     console.log(collapsed);
@@ -20,6 +20,7 @@ class Home extends React.Component {
     //   }
 
     render() {
+
         return (
             <Layout style={{ minHeight: '100vh' }}>
                 <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>

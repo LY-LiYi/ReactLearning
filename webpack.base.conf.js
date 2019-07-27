@@ -5,14 +5,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //每次生成新的bundle文件之前清理/dist文件夹，以确保文件夹的干净整洁
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+
 const webpack = require('webpack');
+
+// const isDev = process.env.NODE_ENV === 'development'
+
 
 module.exports = {
     // 让 webpack 知道以哪个模块为入口，做依赖收集
     // 具体参考 https://webpack.js.org/concepts/#entry
     // 这里 entry 是一个对象，每个页面和它的入口模块是一个 key/value 对   可以有多入口
     // /src/index.js是你的入口js文件
-    entry: [ 'babel-polyfill','./src/index.js'],
+    entry: ['babel-polyfill', './src/index.js'],
     // 告诉 webpack 打包好的文件存放在哪里，以及怎么命名
     // 具体参考 https://webpack.js.org/concepts/#output
     // 这里 filename 有所改变，[name] 表示 entry 里面的 key
@@ -32,10 +38,12 @@ module.exports = {
     // （2）use属性：指定test类型的文件应该使用哪个loader进行预处理。
     // 使用 babel-loader 编译 es6/7/8 和 jsx 语法
     module: {
-        rules: [
-            {
+        rules: [{
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }, {
                 // test: /\.jsx?$/,
                 test: /\.jsx?$/,
@@ -44,7 +52,10 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['style-loader', 'css-loader', 'sass-loader'],
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: ['css-loader', 'sass-loader'],
+                })
             },
             {
                 test: /\.tsx?$/,
@@ -52,11 +63,9 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'url-loader',
-                    }
-                ]
+                use: [{
+                    loader: 'url-loader',
+                }]
             }
         ]
     },
@@ -71,12 +80,19 @@ module.exports = {
             template: './src/index.html',
             filename: 'index.html',
         }),
+        //清除dist文件夹
         new CleanWebpackPlugin(['dist']),
 
         // 开启webpack全局热更新
         new webpack.HotModuleReplacementPlugin(),
 
         // 当接收到热更新信号时，在浏览器console控制台打印更多可读性高的模块名称等信息
-        new webpack.NamedModulesPlugin()
-    ]
+        new webpack.NamedModulesPlugin(),
+
+        new ExtractTextPlugin({
+            filename: '[name].[hash].css',
+            allChunks: false
+        }),
+    ],
+
 };
