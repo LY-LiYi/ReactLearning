@@ -3,117 +3,76 @@ import './PasswordReset.scss';
 
 import { Steps, Form, Icon, Input, Button, message } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
+import VerifyUser from './VerifyUser.jsx'
+import VerifyEmail from './VerifyEmail.jsx'
+import PassWord from './PassWord.jsx'
+import Done from './Done.jsx'
 
 // import  不进行页面按需加载引入方式 
 // webpack require.ensure() 进行页面按需加载引入方式 
-import Passverifyuser from './passVerifyUser.jsx';
 
-const Step = Steps.Step;
-
-class PasswordReset extends React.Component {
+const { Step } = Steps;
 
 
-
-    //验证邮箱
-    handleSubmitemail = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-    }
-
-    //输入新密码
-    handleSubmitPassWord = (e) => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-    }
-
+//进度条
+class PasswordResetStep extends React.Component {
 
     render() {
-        const schedule = 0;
-        const { getFieldDecorator, isFieldTouched, getFieldsError } = this.props.form;
-        // const passwordError = isFieldTouched('password') && getFieldError('password');
-        const info = () => {
-            message.info('This is a normal message');
+        return (
+            <div className="passSteps">
+                <Steps current={this.props.current}>
+                    <Step title="验证用户名" icon={<Icon type="user" />} />
+                    <Step title="验证注册邮箱" icon={<Icon type="solution" />} />
+                    <Step title="输入新密码" icon={<Icon type="warning" />} />
+                    <Step title="完成" icon={<Icon type="smile-o" />} />
+                </Steps>
+            </div>
+        )
+    }
+}
+
+class PasswordReset extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isStep: 0,
+            current: 0,
         };
+        //绑定this
+        this.updateState = this.updateState.bind(this);
+    }
+
+    updateState(value) {
+        console.log(value);
+        this.setState({
+            isStep: value,
+            current: value,
+        });
+    }
+    render() {
+        const { getFieldDecorator, isFieldTouched, getFieldsError } = this.props.form;
+
+        const isStep = this.state.isStep;
+        const current = this.state.current;
+        // 条件渲染
+        let page;
+        switch (isStep) {
+            // 子组件传值给父组件  将事件传递给子组件
+            case 0: page = <VerifyUser updateState={this.updateState} />; break;
+            case 1: page = <VerifyEmail updateState={this.updateState} />; break;
+            case 2: page = <PassWord updateState={this.updateState} />; break;
+            //Router 组件的后代里头才有可能有 this.props.history  将方法传递给子组件
+            case 3: page = <Done history={this.props.history}/>; break;
+            default: page = <VerifyUser />; break;
+        }
+
         return (
             <div className="passBackDrop">
                 <div className="passFrame">
-                    <div className="passSteps">
-                        <Steps progressDot current={schedule}>
-                            <Step title="验证用户名" description="" />
-                            <Step title="验证注册邮箱" description="" />
-                            <Step title="输入新密码" description="" />
-                        </Steps>
-                    </div>
+                    <PasswordResetStep current={current} />
                     <div className="passInput">
-                        {/* 组件名大写开头 */}
-                        {/* <Passverifyuser/> */}
-                        {/* 拆分 */}
-                        <div className="passVerifyUser">
-                            <p>请输入用户名</p>
-                            <Form onSubmit={this.handleSubmit} className="login-form">
-                                <Form.Item>
-                                    {getFieldDecorator('userName', {
-                                        rules: [{ required: true, message: 'Please input your username!' }],
-                                    })(
-                                        <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)', }} />} placeholder="Username" />
-                                    )}
-                                </Form.Item>
-                                <FormItem>
-                                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>验证</Button>
-                                </FormItem>
-                            </Form>
-                        </div>
-                        <div className="passVerifyEmail">
-                            <p>请输入注册邮箱</p>
-                            <Form onSubmit={this.handleSubmitemail} className="login-form">
-                                <Form.Item>
-                                    {getFieldDecorator('email', {
-                                        rules: [{
-                                            type: 'email', message: 'The input is not valid E-mail!',
-                                        }, {
-                                            required: true, message: 'Please input your E-mail!',
-                                        }],
-                                    })(
-                                        <Input prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />} />
-                                    )}
-                                </Form.Item>
-                                <FormItem>
-                                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>验证</Button>
-                                </FormItem>
-                            </Form>
-                        </div>
-                        <div className="passNewPsaaword">
-                            <p className="passwordP">请输入新密码</p>
-                            <Form onSubmit={this.handleSubmitPassWord} className="login-form">
-                                <p>新密码</p>
-                                <Form.Item>
-                                    {getFieldDecorator('password', {
-                                        rules: [{ required: true, message: 'Please input your Password!' }],
-                                    })(
-                                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" id="passwordone" />
-                                    )}
-                                </Form.Item>
-                                <p>确认新密码</p>
-                                <Form.Item>
-                                    {getFieldDecorator('password', {
-                                        rules: [{ required: true, message: 'Please input your Password!' }],
-                                    })(
-                                        <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" id="passwordtwo" />
-                                    )}
-                                </Form.Item>
-                                <FormItem>
-                                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>确定</Button>
-                                </FormItem>
-                            </Form>
-                        </div>
+                        {page}
                     </div>
                 </div>
             </div>

@@ -11,11 +11,11 @@ const FormItem = Form.Item;
 class Login extends React.Component {
 
     componentDidMount() {
-        axios.get("https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?g_tk=5381&uin=0&format=jsonp&jsonpCallback=callback&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1512554796112", {}).then(
-            res => {
-                console.log(res);
-            }
-        )
+        // axios.get("https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?g_tk=5381&uin=0&format=jsonp&jsonpCallback=callback&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1512554796112", {}).then(
+        //     res => {
+        //         console.log(res);
+        //     }
+        // )
     }
 
     handleSubmit = (e) => {
@@ -23,18 +23,18 @@ class Login extends React.Component {
         this.props.form.validateFields((err, values) => {
             if (!err) {
                 console.log('Received values of form: ', values);
-                this.props.history.push('../Home');
+                this.props.history.push('/home');
             }
         });
     }
 
     //路由跳转 withRouter高阶组件 使用history   官方推荐方法
     handleForgetPass = () => {
-        this.props.history.push("../PasswordReset");
+        this.props.history.push("/passwordReset");
     }
 
     handleRes = () => {
-        this.props.history.push("../Registration");
+        this.props.history.push("/registration");
     }
 
     render() {

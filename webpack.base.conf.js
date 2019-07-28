@@ -31,7 +31,8 @@ module.exports = {
     // 这个属性里主要设置 extensions , 也就是文件后缀名
     // 查找依赖的时候的会以此查找这里设置的几个文件名来查找文件
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
+        // alias: { 'css-animation/lib/Event': 'css-animation/dist-src/Event' },
     },
     //loader可以理解为webpack的编译器，它使得webpack可以处理一些非JavaScript文件，比如png、csv、xml、css、json等各种类型的文件，使用合适的loader可以让JavaScript的import导入非JavaScript模块。JavaScript只认为JavaScript文件是模块，而webpack的设计思想即万物皆模块，为了使得webpack能够认识其他“模块”，所以需要loader这个“编译器”。webpack中配置loader有两个目标：
     // （1）test属性：标志有哪些后缀的文件应该被处理，是一个正则表达式。
@@ -66,7 +67,17 @@ module.exports = {
                 use: [{
                     loader: 'url-loader',
                 }]
-            }
+            },
+            {
+                loader:'webpack-ant-icon-loader',
+                enforce: 'pre',
+                // options:{
+                //   chunkName:'antd-icons'
+                // },
+                include:[
+                  require.resolve('@ant-design/icons/lib/dist')
+                ]
+              }
         ]
     },
     // 插件可以用于执行范围更广的任务，包括打包、优化、压缩、搭建服务器等等
