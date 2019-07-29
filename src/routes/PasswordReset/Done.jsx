@@ -17,17 +17,30 @@ class Done extends React.Component {
     //组件已经渲染到页面上
     componentDidMount() {
 
-        // var setTime = setInterval(function () {
-        //     let  timer=3;
-        //     this.setState({ time: --timer });
-        // }, 1000)
+        this.timer = setInterval(
+            () => this.tick(),
+            1000
+        );
     }
 
+    //组件被删除的时候
     componentWillUnmount() {
     }
 
     goHome = () => {
-       this.props.history.push("/login");
+        this.props.history.push("/login");
+    }
+
+    //倒计时跳转
+    //传递函数给setState，state作为参数值
+    tick = () => {
+        this.setState((state) => ({
+            time: state.time - 1,
+        }));
+        if (this.state.time == 0) {
+            clearInterval(this.timer);
+            this.props.history.push('/login');
+        }
     }
 
     render() {
